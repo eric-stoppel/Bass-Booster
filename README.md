@@ -20,3 +20,8 @@ deactivate pydub
 ```
 
 This above snippet will give a bass boosted version of Attention by Charlie Puth in the same folder. You will have to change the song filepath in `BassBooster.py`
+
+
+## Reference
+
+[Pydub Library](https://github.com/jiaaro/pydub) by [James Robert](https://github.com/jiaaro)
