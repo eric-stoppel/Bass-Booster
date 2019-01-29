@@ -4,10 +4,11 @@ import numpy as np
 
 class BassBooster():
     # can change accentuate_db but be careful as some headphones may not be able to produce the bass
-    def __init__(self,filepath, accentuate_db = 2, attenuate_db = 0):
+    def __init__(self,filepath,bass=True, accentuate_db = 2, attenuate_db = 0):
         self.attenuate_db = attenuate_db
         self.accentuate_db = accentuate_db
         self.filepath = filepath
+        self.bass =bass # if bass boosting then true; if treble boosting then False
         
     def bass_line_freq(self,track):
         sample_track = list(track)
@@ -22,11 +23,18 @@ class BassBooster():
         print('Sampling the Audio')
         sample = AudioSegment.from_mp3(self.filepath)
         print('Filtering the Audio')
-        filtered =sample.low_pass_filter(self.bass_line_freq(sample.get_array_of_samples()))
-        print('Bass Boosting')
+        if self.bass:
+            filtered = sample.low_pass_filter(self.bass_line_freq(sample.get_array_of_samples()))
+        else:
+            filtered = sample.high_pass_filter(self.bass_line_freq(sample.get_array_of_samples()))
+        print('Boosting')
         boosted = (sample - self.attenuate_db).overlay(filtered + self.accentuate_db)
         print('Writing the file')
-        boosted.export(self.filepath + 'bass_boost.mp3',format = 'mp3')
+        if self.bass:
+            boosted.export(self.filepath + 'bass_boost.mp3',format = 'mp3')
+        else:
+            boosted.export(self.filepath + 'treble_boost.mp3',format = 'mp3')
+            
 
 
 ############ Change filepath here from 'attention.mp3' to your song #######
@@ -34,5 +42,5 @@ class BassBooster():
 # to produce the bass. Also be careful as to much of bass is not good for
 # human ears :)
 
-b=BassBooster('attention.mp3',accentuate_db = 2,attenuate_db = 0)
+b=BassBooster('attention.mp3', accentuate_db = 2,attenuate_db = 0)
 b.bass_boost()
