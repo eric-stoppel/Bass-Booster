@@ -21,6 +21,8 @@ deactivate pydub
 
 This above snippet will give a bass boosted version of Attention by Charlie Puth in the same folder. You will have to change the song filepath in `BassBooster.py`
 
+To change the amount of bass to be overlaid change the `accentuate_db` variable. But do not increase it much as the headphones/speakers may not be able to produce such low frequencies.
+
 
 ## Reference
 
