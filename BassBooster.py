@@ -3,7 +3,7 @@ import numpy as np
 
 
 class BassBooster():
-    # can change accentuate_db but be careful as some headphones may not be able to produce the bass
+    # can change accentuate_db
     def __init__(self,filepath,bass=True, accentuate_db = 2, attenuate_db = 0):
         self.attenuate_db = attenuate_db
         self.accentuate_db = accentuate_db
