@@ -23,7 +23,3 @@ This above snippet will give a bass boosted version of Attention by Charlie Puth
 
 To change the amount of bass to be overlaid change the `accentuate_db` variable. But do not increase it much as the headphones/speakers may not be able to produce such low frequencies.
 
-
-## Reference
-
-[Pydub Library](https://github.com/jiaaro/pydub) by [James Robert](https://github.com/jiaaro)
