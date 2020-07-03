@@ -36,11 +36,5 @@ class BassBooster():
             boosted.export(self.filepath + 'treble_boost.mp3',format = 'mp3')
             
 
-
-############ Change filepath here from 'attention.mp3' to your song #######
-# can change accentuate_db but be careful as some headphones may not be able
-# to produce the bass. Also be careful as to much of bass is not good for
-# human ears :)
-
 b=BassBooster('attention.mp3', accentuate_db = 2,attenuate_db = 0)
 b.bass_boost()
